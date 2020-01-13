@@ -14,7 +14,6 @@ function create (name) {
   return item;
 }
 
-
 export default {
   validateName,
   create
