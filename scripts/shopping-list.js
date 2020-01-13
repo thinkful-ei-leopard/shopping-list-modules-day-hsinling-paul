@@ -43,8 +43,14 @@ const render = function () {
   $('.js-shopping-list').html(shoppingListItemsString);
 };
 
-const addItemToShoppingList = function (itemName) {
-  store.items.push({ id: cuid(), name: itemName, checked: false });
+const addItemToShoppingList = function(name) {
+  try{
+    item.validateName(name);
+    store.items.push(item.create(name));
+    render();
+  }catch(error){
+    console.log(`Cannot add item: ${error.message}`);
+  }
 };
 
 const handleNewItemSubmit = function () {
